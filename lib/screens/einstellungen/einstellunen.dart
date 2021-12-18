@@ -16,25 +16,6 @@ class _EinstellungenState extends State<Einstellungen> {
   Widget build(BuildContext context) {
     var appBar = AppBar(
     title: Text(translation.einstellungenlabel),
-    actions: [
-      PopupMenuButton(
-        onSelected: (result) {
-          Navigator.pushNamed(context, '/$result');
-        },
-          itemBuilder: (BuildContext context) =>
-          <PopupMenuEntry<String>>[
-            PopupMenuItem(
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.bar_chart_rounded, color: Colors.grey[800]),
-                  Text(translation.statistikenlabel),
-                ],
-              ),
-              value: 'statistiken',
-            ),
-          ],
-        ),
-      ],
     );
     height = MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -50,12 +31,12 @@ class _EinstellungenState extends State<Einstellungen> {
                   showAboutDialog(
                     context: context,
                     applicationIcon: SizedBox(
-                      height: height / 12,
-                      width: height/ 12,
+                      height: height / 15,
+                      width: height/ 15,
                       child: Image.asset('assets/images/multiplication_logo.png')
                     ),
                     applicationName: translation.appbar,
-                    applicationVersion: '1.0.0',
+                    applicationVersion: '1.1.0',
                     children: [
                       RichText(
                         text: TextSpan(

@@ -6,8 +6,14 @@ class PrivacyPolicy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppBar appBar = AppBar(
-      title: Text(translation.privacy),
+    var appBar = AppBar(
+      title: Text(translation.statistikenlabel),
+      actions: [
+        IconButton(
+            onPressed: () => Navigator.pushNamed(context, '/einstellungen'),
+            icon: Icon(Icons.settings)
+        )
+      ],
     );
     return Scaffold(
       appBar: appBar,

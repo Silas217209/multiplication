@@ -10,74 +10,44 @@ class Tests extends StatefulWidget {
   _TestsState createState() => _TestsState();
 }
 
-dynamic countdown = '';
 
 class _TestsState extends State<Tests> {
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
-      title: Text(translation.Testen),
-      leading: GestureDetector(
-        child: Icon(Icons.arrow_back),
-        onTap: () => Navigator.pushNamed(context, '/home'),
-      ),
+      title: Text(translation.statistikenlabel),
       actions: [
-        PopupMenuButton(
-          onSelected: (result) {
-            Navigator.pushNamed(context, '/$result');
-          },
-            itemBuilder: (BuildContext context) =>
-            <PopupMenuEntry<String>>[
-              PopupMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.settings, color: Colors.grey[800],),
-                    Text(translation.einstellungenlabel),
-                  ],
-                ),
-                value: 'einstellungen',
-              ),
-              PopupMenuItem(
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.bar_chart_rounded, color: Colors.grey[800]),
-                    Text(translation.statistikenlabel),
-                  ],
-                ),
-                value: 'statistiken',
-              ),
-            ],
-        ),
+        IconButton(
+            onPressed: () => Navigator.pushNamed(context, '/einstellungen'),
+            icon: Icon(Icons.settings)
+        )
       ],
     );
     height = MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top;
-    return Scaffold(
-      appBar: appBar,
-      body: Align(
-        alignment: Alignment(0.0, 1.0),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height: height/20,),
-                    Center(child: Text(translation.Testvorkommen, style: TextStyle(fontSize: height / 32))),
-                    SizedBox(height: height/25,),
-                    ChooseTest(reihe: 1,),
-                    ChooseTest(reihe: 2,),
-                    ChooseTest(reihe: 3,),
-                    ChooseTest(reihe: 4,),
-                    ChooseTest(reihe: 5,),
-                    ChooseTest(reihe: 6,),
-                    ChooseTest(reihe: 7,),
-                    ChooseTest(reihe: 8,),
-                    ChooseTest(reihe: 9,),
-                    ChooseTest(reihe: 10,),
-                  ]
-                ),
-                CustomTextButton(
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top:0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  ChooseTest(reihe: 1,),
+                  ChooseTest(reihe: 2,),
+                  ChooseTest(reihe: 3,),
+                  ChooseTest(reihe: 4,),
+                  ChooseTest(reihe: 5,),
+                  ChooseTest(reihe: 6,),
+                  ChooseTest(reihe: 7,),
+                  ChooseTest(reihe: 8,),
+                  ChooseTest(reihe: 9,),
+                  ChooseTest(reihe: 10,),
+                ]
+              ),
+              Hero(
+                tag: "losgehts",
+                child: CustomTextButton(
+                  width: MediaQuery.of(context).size.width * 0.7,
                   text: '${translation.Los_gehts} $countdown',
                   onPressed: () async{
                     if(countdown == '') {
@@ -102,13 +72,13 @@ class _TestsState extends State<Tests> {
                               });
                               Navigator.pushNamed(context, '/math_test');
                               setState(() {
+                                anzahl = 10;
                                 falsch = 0;
                                 textcolor = Colors.black;
                                 ergebnisliste.clear();
                                 ergebnis = '';
                                 testfirst = random.nextInt(10) + 1;
-                                testsecond =
-                                testliste[random.nextInt(testliste.length)];
+                                testsecond = testliste[random.nextInt(testliste.length)];
                                 s.start();
                               });
                             });
@@ -118,10 +88,10 @@ class _TestsState extends State<Tests> {
                     }
                   },
                 ),
-                SizedBox(height: height / 90)
-              ],
-            ),
-        ),
+              ),
+              SizedBox(height: height / 90)
+            ],
+          ),
       ),
     );
   }

@@ -14,41 +14,11 @@ class _AuswertungState extends State<Auswertung> {
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
-      title: Text(translation.appbar),
-      leading: GestureDetector(
-        onTap: () => Navigator.popUntil(context, ModalRoute.withName('/test')),
-        child: Icon(Icons.arrow_back),
+      leading: IconButton(
+        onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false),
+        icon: Icon(Icons.arrow_back),
       ),
-      actions: [
-        PopupMenuButton(
-          onSelected: (result) {
-            Navigator.pushNamed(context, '/$result');
-          },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            PopupMenuItem(
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.settings,
-                    color: Colors.grey[800],
-                  ),
-                  Text(translation.einstellungenlabel),
-                ],
-              ),
-              value: 'einstellungen',
-            ),
-            PopupMenuItem(
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.bar_chart_rounded, color: Colors.grey[800]),
-                  Text(translation.statistikenlabel),
-                ],
-              ),
-              value: 'statistiken',
-            ),
-          ],
-        ),
-      ],
+      title: Text(translation.statistikenlabel),
     );
     return WillPopScope(
       onWillPop: () async => false,
@@ -107,19 +77,16 @@ class _AuswertungState extends State<Auswertung> {
                       ]
                     ),
                   ),
-                  Column(
-                    children: [
-                      CustomTextButton(
-                          text: translation.statistikenlabel,
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/statistiken')),
-                      CustomTextButton(
-                          text: translation.nochmal,
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/test');
-                            })
-                    ],
-                  )
+                  Hero(
+                    tag: "losgehts",
+                    child: CustomTextButton(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      text: translation.nochmal,
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

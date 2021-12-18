@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:multiplication/utils/variablen.dart';
-import 'package:hive/hive.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:hive/hive.dart';
+import 'package:multiplication/utils/variablen.dart';
 
 class CustomTextButton extends StatelessWidget {
   final text;
   final onPressed;
+  final width;
 
   const CustomTextButton(
-      {Key? key, required this.text, required this.onPressed})
+      {Key? key,
+      required this.text,
+      required this.onPressed,
+      required this.width})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-            height: height / 100,
-            width: MediaQuery.of(context).size.width * 0.86),
+          height: height / 100,
+        ),
         SizedBox(
           height: height / 15,
-          width: MediaQuery.of(context).size.width / 10 * 8,
+          width: width,
           child: TextButton(
             onPressed: onPressed,
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green)),
+                backgroundColor: MaterialStateProperty.all(Colors.green),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(180),
+                ))),
             child: Text(text,
                 style: TextStyle(
                     color: Colors.grey[200],
@@ -31,8 +40,8 @@ class CustomTextButton extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: height / 300,
-            width: MediaQuery.of(context).size.width * 0.9),
+          height: height / 300,
+        ),
       ],
     );
   }
@@ -40,6 +49,7 @@ class CustomTextButton extends StatelessWidget {
 
 class ChooseTest extends StatefulWidget {
   final int reihe;
+
   ChooseTest({Key? key, required this.reihe}) : super(key: key);
 
   @override
@@ -51,6 +61,7 @@ class _ChooseTestState extends State<ChooseTest> {
   late bool checkboxvalue = testliste.contains(reihe) ? true : false;
 
   _ChooseTestState(this.reihe);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,6 +110,7 @@ class StatistikElement extends StatefulWidget {
   final int firstmultiplicator;
   final int secondmultiplicator;
   final String result;
+
   const StatistikElement(
       {Key? key,
       required this.result,

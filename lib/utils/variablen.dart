@@ -18,6 +18,7 @@ getlanguage() {
       break;
     default:
       returnvalue = German();
+      break;
   }
   return returnvalue;
 }
@@ -26,7 +27,7 @@ var translation = getlanguage();
 Color primaryswatch = Colors.blue;
 Box wertbox = Hive.box("wert");
 Box timebox = Hive.box('time');
-var time;
+var time = 0;
 int falsch = 0;
 int richtig = 0;
 late var height;
@@ -43,3 +44,4 @@ IconData? checkicon;
 Color? iconcolor;
 Stopwatch s = Stopwatch();
 String current_time = '';
+dynamic countdown = '';

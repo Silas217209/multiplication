@@ -39,11 +39,11 @@ class German {
   String bestzeit = 'Beste Zeit';
   String about = 'about';
   String privacy = 'Datenschutzerklärung';
-  String apptext = '''Lerne das kleine Einmaleins schnell und einfach mit dieser App. 
+  String home = 'Home';
+  String nichts = 'Es gibt noch keine Werte';
+  String apptext = '''Übe das kleine Einmaleins schnell und einfach mit dieser App. 
 
-Du hast das kleine Einmaleins in der Schule gelernt, kannst es aber noch nicht so gut? Dann gehe in den Übungsteil der App um das kleine Einmaleins einer beliebigen Reihe zu verfestigen. Lass dir Zeit, denn es geht nicht auf Zeit. Wenn du einen Fehler gemacht hast, ist das auch nicht schlimm, denn jetzt weißt du das richtige Ergebnis und machst es das nächste mal richtig. 
-
-Wenn du das Einmaleins beherrschst oder wenn du wissen möchtest, wie gut du bist, gehe in den Testteil der App. Suche dir die Malreihen aus in welchen du getestet werden möchtest und fange an. Es werden dir 10 zufällig generierte Aufgaben nacheinander angezeigt, die du Lösen musst. Auch hier geht es nicht auf Zeit sondern auf Anzahl Fehler. 
+Wähle die Malreihen aus, die du üben willst.
 
 In den Statistiken siehst du eine Einmaleins Tabelle mit Feldern für jede Aufgabe, die du in einem Test gelöst hast. Wenn der Kreis grün ist, bedeutet dies, dass du mindestens 9 von 10 Aufgaben richtig hattest. Ist er gelb, bedeutet es, dass du mindestens 5 von 10 aufgaben richtig hattest und rot bedeutet, dass du 4 von 10 oder weniger Aufgaben richtig hattest.
 
